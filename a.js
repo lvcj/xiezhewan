@@ -24,6 +24,8 @@ const selectionSort = (arr, n) => {
                 let temp = arr[i]
                 arr[i] = arr[minIndex]
                 arr[minIndex] = temp
+                // es6
+                // [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
             }
         }
     }
@@ -58,3 +60,30 @@ function insert() {
 }
 
 insert()
+
+// 生成几乎有序的数组
+function seqArr(n) {
+    let _arr = []
+    for (let i = 0; i < n; i++) {
+        _arr.push(i)
+    }
+    return _arr
+}
+
+function generateArr(n, swapTimes) {
+    let arr = seqArr(n)
+    let posx = 0 , posy = 0
+    for (let i = 0; i < swapTimes; i++) {
+        posx = Math.floor(Math.random() * n)
+        posy = Math.floor(Math.random() * n)
+        let temp = arr[posy]
+        arr[posx] = arr[posy]
+        arr[posy] = temp
+        // console.log(posx, posy)
+        // debugger
+        // [arr[posx], arr[posy]] = [arr[posy], arr[posx]]
+    }
+    return arr
+}
+
+console.log(generateArr(100, 10))
