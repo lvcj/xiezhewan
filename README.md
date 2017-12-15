@@ -26,7 +26,7 @@ function generateArr(n, swapTimes) {
         // console.log(posx, posy)
         // debugger
         // [arr[posx], arr[posy]] = [arr[posy], arr[posx]]
-        // ES6这么结构交换暂时又问题不知道为啥?
+        // ES6这么解构交换暂时又问题不知道为啥?
     }
     return arr
 }
