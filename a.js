@@ -65,7 +65,7 @@ insert()
 function seqArr(n) {
     let _arr = []
     for (let i = 0; i < n; i++) {
-        _arr.push(i)
+        _arr.push(i * 2)
     }
     return _arr
 }
@@ -82,8 +82,9 @@ function generateArr(n, swapTimes) {
         // console.log(posx, posy)
         // debugger
         // [arr[posx], arr[posy]] = [arr[posy], arr[posx]]
+        // ES6这么结构交换暂时又问题不知道为啥
     }
     return arr
 }
 
-console.log(generateArr(100, 10))
+console.log(generateArr(10, 2))
