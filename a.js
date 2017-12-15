@@ -1,10 +1,34 @@
-// const arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+// 生成几乎有序的数组
+function seqArr(n) {
+    let _arr = []
+    for (let i = 0; i < n; i++) {
+        _arr.push(i * 2)
+    }
+    return _arr
+}
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
+function generateArr(n, swapTimes) {
+    let arr = seqArr(n)
+    let posx = 0 , posy = 0
+    for (let i = 0; i < swapTimes; i++) {
+        posx = Math.floor(Math.random() * n)
+        posy = Math.floor(Math.random() * n); // 这个分号是必须的
+        // let temp = arr[posy]
+        // arr[posx] = arr[posy]
+        // arr[posy] = temp
+        // console.log(posx, posy)
+        // debugger
+        [arr[posx], arr[posy]] = [arr[posy], arr[posx]]
+        // ES6这么结构交换暂时又问题不知道为啥
+    }
+    return arr
 }
 // console.log(getRandomInt(0, 100))
 // 生成随机数组
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 function getRandomArr(min, max, n) {
     let arr = []
     for (let i = 0; i < n; i++) {
@@ -61,30 +85,22 @@ function insert() {
 
 insert()
 
-// 生成几乎有序的数组
-function seqArr(n) {
-    let _arr = []
+// 冒泡排序
+const sort = (arr, n) => {
     for (let i = 0; i < n; i++) {
-        _arr.push(i * 2)
-    }
-    return _arr
-}
-
-function generateArr(n, swapTimes) {
-    let arr = seqArr(n)
-    let posx = 0 , posy = 0
-    for (let i = 0; i < swapTimes; i++) {
-        posx = Math.floor(Math.random() * n)
-        posy = Math.floor(Math.random() * n);
-        // let temp = arr[posy]
-        // arr[posx] = arr[posy]
-        // arr[posy] = temp
-        // console.log(posx, posy)
-        // debugger
-        [arr[posx], arr[posy]] = [arr[posy], arr[posx]]
-        // ES6这么结构交换暂时又问题不知道为啥
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // let temp = arr[j]
+                // arr[j] = arr[j + 1]
+                // arr[j + 1] = temp
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+            }
+        }
     }
     return arr
 }
 
-console.log(generateArr(10, 2))
+let arr1 = [3,1,5,7,2,4,9,6,10,8]
+console.log(sort(arr1, arr1.length))
+
+// 快速排序
