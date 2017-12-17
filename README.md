@@ -35,3 +35,5 @@ console.log(generateArr(10, 2))
 ```
 > 知道了问题了，万恶的js
 > 解构不成功是因为 posy = Math.floor(Math.random() * n) 没加分号
+
+###### 手工datepicker
