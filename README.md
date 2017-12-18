@@ -37,6 +37,7 @@ console.log(generateArr(10, 2))
 > 解构不成功是因为 posy = Math.floor(Math.random() * n) 没加分号
 
 ##### 手工datepicker
+* [预览](https://zouhangwithsweet.github.io/xiezhewan/)
 * 日期对象
 > 当月第一天 new Date(year, month - 1, 1)
 > 当月最后一天 new Date(year, month, 0)
