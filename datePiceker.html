@@ -6,10 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./dp.css">
+    <style>
+        .datePicker {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px;
+            height: 24px;
+            line-height: 24px;
+            width: 240px;
+        }
+        .datePicker:focus {
+            outline: 0 none;
+            border: 1px solid #1abc9c;
+        }
+    </style>
 </head>
 <body>
-    <div class="v-datepicker__wrapper" id="v-dp" ref="wraper">
-        <div class="v-datepicker__header">
+    <input type="text" class="datePicker">
+    <!-- <div class="v-datepicker__wrapper" id="v-dp" ref="wraper">
+        <!-- <div class="v-datepicker__header">
             <a href="javascript:void(0)" class="v-datepicker__btn prev">&lt;</a>
             <span class="v-datepiker_current">2017-12-17</span>
             <a href="javascript:void(0)" class="v-datepicker__btn next">&gt;</a>
@@ -51,12 +66,13 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
+        </div> -->
+    <!-- </div> -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="./dp.js"></script>
 <script>
-    var dp = new Vue({
+    let dp = new Vue({
         el: '#v-dp',
         data() {
             return {
@@ -77,5 +93,6 @@
             }
         }
     })
+    let d = new datePicker(document.querySelector('#v-dp'))
 </script>
 </html>

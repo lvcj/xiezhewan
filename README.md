@@ -37,7 +37,10 @@ console.log(generateArr(10, 2))
 > 解构不成功是因为 posy = Math.floor(Math.random() * n) 没加分号
 
 ##### 手工datepicker
-
+* 日期对象
+> 当月第一天 new Date(year, month - 1, 1)
+> 当月最后一天 new Date(year, month, 0)
+> 星期1到日 [1, 2, 3, 4, 5, 6, 0]
 ##### 函数节流(throttle)和函数防抖(debounce)
 
 ###### 函数节流就是预定一个函数只有在大于等于执行周期时才执行，周期内调用不执行。好像水滴攒到一定重量才会落下一样。
