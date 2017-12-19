@@ -1,14 +1,30 @@
+function format(date) {
+    let ret = '';
+    let padding = function(num) {
+        if (num <= 9) {
+            return '0' + num
+        }
+        return num
+    }
+    ret += date.getFullYear() + '-'
+    ret += padding(date.getMonth() + 1) + '-'
+    ret += padding(date.getDate())
+    return ret
+}
+
 class datePicker {
     constructor(dom) {
+        this.m = null
+        this.wrapper = null
         this.init()
         this.mounted(dom)
     }
     // 渲染
     build(year, month) {
-        let m =  this.getMonthData(year, month)
+        this.m =  this.getMonthData(year, month)
         let html = `<div class="v-datepicker__header">
                         <a href="javascript:void(0)" class="v-datepicker__btn prev">&lt;</a>
-                        <span class="v-datepiker_current">${m.year}-${m.month}</span>
+                        <span class="v-datepiker_current">${this.m.year}-${this.m.month}</span>
                         <a href="javascript:void(0)" class="v-datepicker__btn next">&gt;</a>
                     </div>
                     <div class="v-datapicker__body">
@@ -25,12 +41,12 @@ class datePicker {
                                 </tr>
                             </thead>
                             <tbody>`
-        for (let i = 0; i < m.date.length; i++) {
-            let date = m.date[i]
+        for (let i = 0; i < this.m.date.length; i++) {
+            let date = this.m.date[i]
             if (i % 7 === 0) {
                 html += `<tr>`
             }
-            html += `<td>${date.showDate}</td>`
+            html += `<td data-date="${date.date}">${date.showDate}</td>`
             if (i % 7 === 6) {
                 html += `</tr>`
             }
@@ -40,15 +56,56 @@ class datePicker {
                 </div>`
         return html
     }
+    rendar(direction) {
+        let year,month 
+        if (this.m) {
+            year = this.m.year
+            month = this.m.month
+        }
+        if (direction === 'prev') month--
+        if (direction === 'next') month++
+        let html = this.build(year, month)
+        if (!this.wrapper) {
+            this.wrapper = document.createElement('div')
+            document.body.appendChild(this.wrapper)
+            this.wrapper.className = 'v-datepicker__wrapper'
+        }
+        this.wrapper.innerHTML = html
+    }
     // 挂载
     mounted(dom) {
-        let html = this.build()
-        // document.body.innerHTML = html
-        // div class="v-datepicker__wrapper" id="v-dp" ref="wraper"
-        let wrapper = document.createElement('div')
-        wrapper.className = 'v-datepicker__wrapper'
-        wrapper.innerHTML = html
-        document.body.appendChild(wrapper)
+        this.rendar()
+        let $input = document.querySelector('.datePicker')
+        let show = false
+        $input.addEventListener('click',() => {
+            if (show) {
+                this.wrapper.classList.remove('show')
+                show = false
+            } else {
+                this.wrapper.classList.add('show')
+                let left = $input.offsetLeft
+                let top = $input.offsetTop
+                let h = $input.offsetHeight
+                this.wrapper.style.top = top + h + 1 + 'px'
+                this.wrapper.style.left = left + 'px'
+                show = true
+            }
+        })
+        this.wrapper.addEventListener('click', e => {
+            let target = e.target
+            if (!target.classList.contains('v-datepicker__btn')) return
+            if (target.classList.contains('prev')) {
+                this.rendar('prev')
+            } else if (target.classList.contains('next')) {
+                this.rendar('next')
+            }
+        }, false)
+        this.wrapper.addEventListener('click', e => {
+            let target = e.target
+            if (target.tagName.toLowerCase() !== 'td') return
+            let date = new Date(this.m.year, this.m.month, target.dataset.date)
+            $input.value = format(date)
+        })
     }
     // 获取月份
     getMonthData(year, month) {
