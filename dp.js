@@ -91,6 +91,10 @@ class datePicker {
             if (target.tagName.toLowerCase() !== 'td') return
             let date = new Date(this.m.year, this.m.month - 1, target.dataset.date)
             $input.value = this.format(date)
+            document.querySelectorAll('td').forEach(item => {
+                item.classList.remove('active')
+            })
+            e.target.classList.add('active')
             this.close()
         })
     }
