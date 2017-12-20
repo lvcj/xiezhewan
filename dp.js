@@ -103,7 +103,7 @@ class datePicker {
         this.wrapper.addEventListener('click', e => {
             let target = e.target
             if (target.tagName.toLowerCase() !== 'td') return
-            let date = new Date(this.m.year, this.m.month, target.dataset.date)
+            let date = new Date(this.m.year, this.m.month - 1, target.dataset.date)
             $input.value = format(date)
         })
     }
