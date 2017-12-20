@@ -63,7 +63,8 @@ class datePicker {
     mounted(dom) {
         this.rendar()
         let $input = document.querySelector('.datePicker')
-        $input.addEventListener('click',() => {
+        let trigger = document.querySelector('.icon')
+        trigger.addEventListener('click',() => {
             if (this.show) {
                 this.close()
             } else {

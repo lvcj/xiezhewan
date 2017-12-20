@@ -5,25 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./dp.css">
     <style>
         .datePicker {
             border: 1px solid #ccc;
-            border-radius: 4px;
             padding: 5px;
             height: 24px;
             line-height: 24px;
-            width: 240px;
+            width: 160px;
             position: relative;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 0 5px;
         }
         .datePicker:focus {
             outline: 0 none;
-            border: 1px solid #1abc9c;
+            border-bottom: 1px solid #1abc9c;
+        }
+        .icon {
+            position: relative;
+            left: -25px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <input type="text" class="datePicker">
+    <div>
+        <input type="text" class="datePicker">
+        <i class="icon fa fa-calendar-o"></i>
+    </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="./dp.js"></script>
