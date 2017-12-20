@@ -1,21 +1,8 @@
-function format(date) {
-    let ret = '';
-    let padding = function(num) {
-        if (num <= 9) {
-            return '0' + num
-        }
-        return num
-    }
-    ret += date.getFullYear() + '-'
-    ret += padding(date.getMonth() + 1) + '-'
-    ret += padding(date.getDate())
-    return ret
-}
-
 class datePicker {
     constructor(dom) {
         this.m = null
         this.wrapper = null
+        this.show = false
         this.init()
         this.mounted(dom)
     }
@@ -76,11 +63,9 @@ class datePicker {
     mounted(dom) {
         this.rendar()
         let $input = document.querySelector('.datePicker')
-        let show = false
         $input.addEventListener('click',() => {
-            if (show) {
-                this.wrapper.classList.remove('show')
-                show = false
+            if (this.show) {
+                this.close()
             } else {
                 this.wrapper.classList.add('show')
                 let left = $input.offsetLeft
@@ -88,7 +73,7 @@ class datePicker {
                 let h = $input.offsetHeight
                 this.wrapper.style.top = top + h + 1 + 'px'
                 this.wrapper.style.left = left + 'px'
-                show = true
+                this.show = true
             }
         })
         this.wrapper.addEventListener('click', e => {
@@ -104,8 +89,14 @@ class datePicker {
             let target = e.target
             if (target.tagName.toLowerCase() !== 'td') return
             let date = new Date(this.m.year, this.m.month - 1, target.dataset.date)
-            $input.value = format(date)
+            $input.value = this.format(date)
+            this.close()
         })
+    }
+    // 关闭
+    close() {
+        this.wrapper.classList.remove('show')
+        this.show = false
     }
     // 获取月份
     getMonthData(year, month) {
@@ -156,5 +147,19 @@ class datePicker {
     // 挂载为全局对象
     init() {
         window.datePicker = this
+    }
+    // format
+    format(date) {
+        let ret = '';
+        let padding = function(num) {
+            if (num <= 9) {
+                return '0' + num
+            }
+            return num
+        }
+        ret += date.getFullYear() + '-'
+        ret += padding(date.getMonth() + 1) + '-'
+        ret += padding(date.getDate())
+        return ret
     }
 }
