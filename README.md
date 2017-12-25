@@ -54,3 +54,5 @@ console.log(generateArr(10, 2))
 场景：
 > * 实时搜索（keyup）
 > * 拖拽（mousemove）
+
+###### 拾人牙慧，研究下vue双向绑定

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" value="" id="input">
+        <p>你好，<span id="nickName"></span></p>
+        <div id="introduce"></div>
+    </div>
+    <div>
+        <h1 id="name">{{name}}</h1>
+    </div>
+</body>
+<script src="./v.js"></script>
+<script>
+    var userInfo = {};
+    var val = document.getElementById('input')
+    val.addEventListener('input',() => {
+        userInfo.nickName = val.value
+    })
+    Object.defineProperty(userInfo, "nickName", {
+        get: function(){
+            return document.getElementById('nickName').innerHTML;
+        },
+        set: function(nick){
+            document.getElementById('nickName').innerHTML = nick;
+        }
+    });
+    Object.defineProperty(userInfo, "introduce", {
+        get: function(){
+            return document.getElementById('introduce').innerHTML;
+        },
+        set: function(introduce){
+            document.getElementById('introduce').innerHTML = introduce;
+        }
+    })
+    // ===================================================================
+    let ele = document.getElementById('name')
+    let app = new selfVue({
+        name: 'hello world'
+    }, ele, 'name')
+    window.setTimeout(() => {
+        console.log('name值要变了')
+        app.obj.name = 'canfoo'
+    }, 2000)
+</script>
+</html>
