@@ -56,7 +56,7 @@ console.log(generateArr(10, 2))
 > * 拖拽（mousemove）
 
 ###### 拾人牙慧，研究下vue双向绑定
-> 极简实现input双向绑定，也是v-model的底层原理通过监听，input事件和Object.defineProperty实现
+> [极简实现input双向绑定，也是v-model的底层原理通过监听，input事件和Object.defineProperty实现](https://zouhangwithsweet.github.io/xiezhewan/easy.html)
 ```
 // html结构
 <div>
