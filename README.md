@@ -56,3 +56,36 @@ console.log(generateArr(10, 2))
 > * 拖拽（mousemove）
 
 ###### 拾人牙慧，研究下vue双向绑定
+> 极简实现input双向绑定，也是v-model的底层原理通过监听，input事件和Object.defineProperty实现
+```
+// html结构
+<div>
+    <input type="text" value="" id="input">
+    <p>你好，<span id="nickName"></span></p>
+    <div id="introduce"></div>
+</div>
+// script
+var userInfo = {};
+    var val = document.getElementById('input')
+    val.addEventListener('input',() => {
+        userInfo.nickName = val.value
+    })
+    Object.defineProperty(userInfo, "nickName", {
+        get: function(){
+            return document.getElementById('nickName').innerHTML;
+        },
+        set: function(nick){
+            document.getElementById('nickName').innerHTML = nick;
+        }
+    });
+    Object.defineProperty(userInfo, "introduce", {
+        get: function(){
+            return document.getElementById('introduce').innerHTML;
+        },
+        set: function(introduce){
+            document.getElementById('introduce').innerHTML = introduce;
+        }
+    })
+```
+>
+>
