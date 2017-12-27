@@ -12,8 +12,9 @@
         <p>你好，<span id="nickName"></span></p>
         <div id="introduce"></div>
     </div>
-    <div>
-        <h1 id="name">{{name}}</h1>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <h1>{{name}}</h1>
     </div>
 </body>
 <script src="./v.js"></script>
@@ -42,8 +43,12 @@
     // ===================================================================
     let ele = document.getElementById('name')
     let app = new selfVue({
-        name: 'hello world'
-    }, ele, 'name')
+        el: '#app',
+        obj: {
+            title: 'hello world',
+            name: ''
+        }
+    })
     window.setTimeout(() => {
         console.log('name值要变了')
         app.obj.name = 'canfoo'
