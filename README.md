@@ -1,7 +1,7 @@
 # 写着玩，练练算法，恶心的题什么的
->
+>  
 >let's start!
->
+>  
 
 ##### es6数组解构有点问题
 ```
@@ -33,27 +33,27 @@ function generateArr(n, swapTimes) {
 
 console.log(generateArr(10, 2))
 ```
-> 知道了问题了，万恶的js
+> 知道了问题了，万恶的js  
 > 解构不成功是因为 posy = Math.floor(Math.random() * n) 没加分号
 
 ##### 手工datepicker
 * [预览](https://zouhangwithsweet.github.io/xiezhewan/)
 * 日期对象
-> 当月第一天 new Date(year, month - 1, 1)
-> 当月最后一天 new Date(year, month, 0)
-> 星期1到日 [1, 2, 3, 4, 5, 6, 0]
+> 当月第一天 new Date(year, month - 1, 1)  
+> 当月最后一天 new Date(year, month, 0)  
+> 星期1到日 [1, 2, 3, 4, 5, 6, 0]  
 ##### 函数节流(throttle)和函数防抖(debounce)
 
 ###### 函数节流就是预定一个函数只有在大于等于执行周期时才执行，周期内调用不执行。好像水滴攒到一定重量才会落下一样。
 场景：
-> * 窗口调整（resize）
-> * 页面滚动（scroll）
-> * 抢购疯狂点击（mousedown）
+> * 窗口调整（resize）  
+> * 页面滚动（scroll）  
+> * 抢购疯狂点击（mousedown）  
 
 ###### 函数防抖就是在函数需要频繁触发情况时，只有足够空闲的时间，才执行一次。好像公交司机会等人都上车后才出站一样。
 场景：
-> * 实时搜索（keyup）
-> * 拖拽（mousemove）
+> * 实时搜索（keyup）  
+> * 拖拽（mousemove）  
 
 ##### 拾人牙慧，研究下vue双向绑定
 > [极简实现input双向绑定，也是v-model的底层原理通过监听，input事件和Object.defineProperty实现](https://zouhangwithsweet.github.io/xiezhewan/easy.html)
@@ -87,5 +87,28 @@ var userInfo = {};
         }
     })
 ```
->
->
+##### rem移动端布局
+
+> 直接移动端写的很多，但是都是套的模板  
+> 在摘抄一下移动端的rem最简单的办法(目前都是750的页面)
+> ```
+(function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if(clientWidth>=640){
+                    docEl.style.fontSize = '100px';
+                }else{
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+链接：https://www.jianshu.com/p/b00cd3506782
+> ```
