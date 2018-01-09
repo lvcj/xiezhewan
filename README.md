@@ -91,7 +91,7 @@ var userInfo = {};
 
 > 直接移动端写的很多，但是都是套的模板  
 > 在摘抄一下移动端的rem最简单的办法(目前都是750的页面)
-> ```
+```
 (function (doc, win) {
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -111,4 +111,4 @@ var userInfo = {};
     })(document, window);
 
 链接：https://www.jianshu.com/p/b00cd3506782
-> ```
+```
