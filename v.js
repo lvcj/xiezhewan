@@ -140,6 +140,6 @@ class selfVue {
             set(newVal) {
                 this.obj[key] = newVal
             }
-        })
+        }) 
     }
 }

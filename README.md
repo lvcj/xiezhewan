@@ -113,3 +113,13 @@ var userInfo = {};
 链接：https://www.jianshu.com/p/b00cd3506782
 ```
 > MongoDB start
+
+##### ES6 学习笔记
+> 主要记录下不常用的ES6语法，加深记忆
+
+* set 和 map  
+** set
+    > 不能有重复项，可以运用于数组去重； `[...new Set([])]`  
+    > 可以`forEach((value, key) => console.log(value, key))` 二者一致；keys()，values()，entries()  
+    > size add delete has clear
+    *** webset 元素必须是对象，且为弱引用；垃圾回收机制引用计数无效
