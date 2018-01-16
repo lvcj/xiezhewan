@@ -118,8 +118,8 @@ var userInfo = {};
 > 主要记录下不常用的ES6语法，加深记忆
 
 * set 和 map  
-** set
+ * set
     > 不能有重复项，可以运用于数组去重； `[...new Set([])]`  
     > 可以`forEach((value, key) => console.log(value, key))` 二者一致；keys()，values()，entries()  
     > size add delete has clear
-    *** webset 元素必须是对象，且为弱引用；垃圾回收机制引用计数无效
+    * webset 元素必须是对象，且为弱引用；垃圾回收机制引用计数无效
