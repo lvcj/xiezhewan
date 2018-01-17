@@ -123,3 +123,10 @@ var userInfo = {};
     > 可以`forEach((value, key) => console.log(value, key))` 二者一致；keys()，values()，entries()  
     > size add delete has clear
     * webset 元素必须是对象，且为弱引用；垃圾回收机制引用计数无效
+
+##### 计算机网络
+* 数百万级的互联的计算设备的集合
+* 网络协议（newwork protocol）
+    > 数据交换的规则、标准和约定
+        > * 语法（syntax），数据的结构或格式
+        > * 语义（semantic）
