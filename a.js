@@ -12,13 +12,13 @@ function generateArr(n, swapTimes) {
     let posx = 0 , posy = 0
     for (let i = 0; i < swapTimes; i++) {
         posx = Math.floor(Math.random() * n)
-        posy = Math.floor(Math.random() * n); // 这个分号是必须的
+        posy = Math.floor(Math.random() * n) // 这个分号是必须的
         // let temp = arr[posy]
         // arr[posx] = arr[posy]
         // arr[posy] = temp
         // console.log(posx, posy)
         // debugger
-        [arr[posx], arr[posy]] = [arr[posy], arr[posx]]
+        ;[arr[posx], arr[posy]] = [arr[posy], arr[posx]]
         // ES6这么结构交换暂时又问题不知道为啥
     }
     return arr
