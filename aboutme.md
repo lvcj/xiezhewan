@@ -57,4 +57,4 @@
 
 ## 联系方式
 * email: zouhangoo@outlook.com
-* https://github.com/zouhangwithsweet
+* github: https://github.com/zouhangwithsweet
