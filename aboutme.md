@@ -49,9 +49,9 @@
 * dota2，观看美食节目
 
 ## 近期要做的事
-> 1.阅读 《你不知道的JavaScript》  
- 2.nodejs入门  
- 3.vue源码学习  
+> 1.阅读 《你不知道的JavaScript》  
+> 2.nodejs入门  
+> 3.vue源码学习  
 
 ## 自我评价
 
