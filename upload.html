@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="6" id="myFile">
+    <button type="submit" id="btn">upload</button>
+    <progress id="pro" value="0" max="100"></progress>
+</body>
+
+    <script>
+        let fileInput = document.getElementById('myFile')
+        let btn = document.getElementById('btn')
+        let formData = new FormData()
+        fileInput.onchange = function(event) {
+            formData.append('myFile', event.target.files[0])
+        }
+        btn.onclick = function() {
+            let xhr = new XMLHttpRequest()
+            xhr.open("POST", "/upload", true)
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    console.log('OK')
+                }
+            }
+            xhr.send(formData)
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert('ok')
+                }
+            }
+            xhr.upload.onprogress = function(event) {
+                if (event.lengthComputable) {
+                    var percentComplete = (event.loaded / event.total) * 100;
+                    // 对进度进行处理
+                }
+            }
+            xhr = null
+        }
+    </script>
+</html>
