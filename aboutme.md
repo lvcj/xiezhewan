@@ -58,7 +58,8 @@
 * 逛v2ex，掘金，技术交流群了解技术动态
 * github 维护个人兴趣项目，看技术书籍，补基础
 * dota2，观看美食节目
-
+## 个人博客
+[https://zouhangwithsweet.github.io/](https://zouhangwithsweet.github.io/)
 ## 近期要做的事
 > 1.阅读 《你不知道的JavaScript》  
  2.nodejs入门  
