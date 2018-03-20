@@ -1,73 +1,76 @@
-/**
- * 注：本学习笔记全部用ES6语法书写
- * 
- * =====vue相关=====
- * 在使用defineProperty方法定义新属性时（非修改旧属性），
- * 如果不指定，configurable, enumerable和writable特性的默认值都是false。
- * 
- * 数据属性
- *  [[Configurable]]: 表示能否通过delete删除属性，能否修改属性的特性，能否把属性改为访问器属性。默认值: true
- *  [[Enumerable]]: 表示能否通过for-in,Object.keys()迭代。默认值：true
- *  [[Writable]]: 表示能否修改属性的值。默认值: true
- *  [[Value]]: 表示属性的数据值。默认值: undefined
- * 
- * 访问器属性
- * [[Get]]: 在读取属性时调用的函数。默认值: undefined
- * [[Set]]: 在写入属性时调用的函数。默认值: undefined 
- * 
- * 
- * 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
- */
-
-
-
-class Observer {
-    constructor(data) {
-        this.data = data
-        this.walk(data)
+class Dep {
+    constructor () {
+        this.subs = [];
     }
 
-    walk(obj) {
-        let val
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                val = obj[key]
-                if (typeof val === 'object') {
-                    new Observer(val)
-                }
-                
-                this.convert(key ,val)
-            }
+    addSub () {
+        this.subs.push(sub)
+    }
+
+    removeSub () {
+        remove(this.subs, sub)
+    }
+    /*Github:https://github.com/answershuto*/
+    notify () {
+        // stabilize the subscriber list first
+        const subs = this.subs.slice()
+        for (let i = 0, l = subs.length; i < l; i++) {
+            subs[i].update()
         }
     }
+}
 
-    convert(key, val) {
-        Object.defineProperty(this.data, key, {
-            enumerable: true,
+function observer(value, cb) {
+    Object.keys(value).forEach((key) => defineReactive(value, key, value[key] , cb))
+}
+
+function defineReactive (obj, key, val, cb) {
+    Object.defineProperty(obj, key, {
+        enumerable: true,
+        configurable: true,
+        get: ()=>{
+            /*....依赖收集等....*/
+            /*Github:https://github.com/answershuto*/
+        },
+        set:newVal=> {
+            cb();/*订阅者收到消息的回调*/
+        }
+    })
+}
+
+/*代理*/
+function _proxy (data, vm) {
+    const that = vm;
+    Object.keys(data).forEach(key => {
+        Object.defineProperty(that, key, {
             configurable: true,
-            // writable: true,
-            get() {
-                console.log(`你访问了${key}`)
-                return val
+            enumerable: true,
+            get: function proxyGetter () {
+                return that._data[key];
             },
-            set(newVal) {
-                console.log(`你设置了${key}`)
-                console.log(`新的${key}的值=${newVal}`)
-                if (newVal === val) return
-                val = newVal
+            set: function proxySetter (val) {
+                that._data[key] = val;
             }
         })
+    });
+}
+
+
+class Vue {
+    constructor(options) {
+        this._data = options.data;
+        observer(this._data, options.render)
+        _proxy(options.data, this)
     }
 }
 
-let data = {
-    user: {
-        name: 'zz',
-        age: '25'
+let app = new Vue({
+    el: '#app',
+    data: {
+        text: 'text',
+        text2: 'text2'
     },
-    address: {
-        city: 'beijing'
+    render(){
+        console.log("render");
     }
-}
-
-let app = new Observer(data)
+})

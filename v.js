@@ -112,7 +112,7 @@ function defineReactive(obj, key, val) {
         }
     })
 }
-// Dep.target = null
+Dep.target = null
 
 function observe(obj) {
     if (!obj || typeof obj !== 'object') return

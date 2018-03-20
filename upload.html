@@ -27,9 +27,25 @@
 </style>
 <body>
     <div class="wrapper">
-        <div class="left"></div>
-        <div class="middle"></div>
-        <div class="right"></div>
+            <input type="file" name="resume" id="pdf">
+            <button id="btn">pp</button>
     </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+    <script>
+        var f = new FormData()
+        var pdf = document.getElementById('pdf')
+        f.append('email', 'zouhangoo@outlook.com')
+        f.append('name', '邹航测试测试哈^-^，能求个关注吗？')
+        document.getElementById('btn').onclick = function() {
+            console.log(pdf.files[0])
+            // f.append('resume', pdf.files[0])
+            axios.post('http://127.0.0.1:3000/', {
+                data: f
+            }, {
+                headers: { 'Content-Type': 'application/json' }
+            })
+        }
+    </script>
 </body>
 </html>
