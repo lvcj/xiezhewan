@@ -103,4 +103,18 @@ const sort = (arr, n) => {
 let arr1 = [3,1,5,7,2,4,9,6,10,8]
 console.log(sort(arr1, arr1.length))
 
-// 快速排序
+// 归并排序
+
+const mergeSort = (arr, n) => {
+    let midK = Math.floor(n/2)
+    let leftArr = []
+    let rightArr = []
+    for(let i = 0; i < n; i++) {
+        if (arr[i] <= arr[midK]) {
+            leftArr.push(arr[i])
+        } else {
+            rightArr.push(arr[i])
+        }
+    }
+    return mergeSort(leftArr).concat(arr[midK], mergeSort(rightArr))
+}
