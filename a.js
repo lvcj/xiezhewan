@@ -103,18 +103,21 @@ const sort = (arr, n) => {
 let arr1 = [3,1,5,7,2,4,9,6,10,8]
 console.log(sort(arr1, arr1.length))
 
-// 归并排序
+// 快排排序
 
-const mergeSort = (arr, n) => {
-    let midK = Math.floor(n/2)
-    let leftArr = []
-    let rightArr = []
-    for(let i = 0; i < n; i++) {
-        if (arr[i] <= arr[midK]) {
-            leftArr.push(arr[i])
+const mergeSort = (arr) => {
+    if (arr.length <= 1) return arr
+    let index = Math.floor(arr.length/2)
+    // 要切割数组
+    let v = arr.splice(index, 1)[0];
+    let left = [];
+    let right = [];
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i] < v) {
+            left.push(arr[i])
         } else {
-            rightArr.push(arr[i])
+            right.push(arr[i])
         }
     }
-    return mergeSort(leftArr).concat(arr[midK], mergeSort(rightArr))
+    return mergeSort(left).concat(v, mergeSort(right))
 }
