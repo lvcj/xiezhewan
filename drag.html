@@ -6,18 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
-
-<body>
-    <div class="dropzone">
-        <div id="draggable" draggable="true" onclick="_dragStart(this)">
-            This div is draggable
-        </div>
-    </div>
-    <div class="dropzone"></div>
-    <div class="dropzone"></div>
-    <div class="dropzone"></div>
-
     <style>
         #draggable {
             width: 200px;
@@ -33,8 +21,26 @@
             margin-bottom: 10px;
             padding: 10px;
         }
+        .drag {
+            width: 80px;
+            height: 80px;
+            background-color: darksalmon;
+        }
     </style>
+</head>
 
+<body>
+    <div class="dropzone">
+        <div id="draggable" draggable="true">
+            This div is draggable
+        </div>
+    </div>
+    <div class="dropzone"></div>
+    <div class="dropzone"></div>
+    <div class="dropzone"></div>
+    <div class="drag">
+
+    </div>
     <script>
         var dragged;
         function _dragStart(...args) {
@@ -43,13 +49,10 @@
         document.getElementById('draggable').ondragstart = function(e) {
             console.log(e)
         }
-        // document.getElementById('draggable').onclick = function(e) {
-        //     console.log('ok')
-        // }
 
         /* 拖动目标元素时触发drag事件 */
         document.addEventListener("drag", function (event) {
-
+            console.log(event.target)
         }, false);
 
         document.addEventListener("dragstart", function (event) {
@@ -95,8 +98,58 @@
                 dragged.parentNode.removeChild(dragged);
                 event.target.appendChild(dragged);
             }
-
         }, false);
+    </script>
+    <script>
+        let drag = document.querySelector('.drag')
+        class Drag {
+            constructor(el) {
+                this.el = el
+                // 拖拽信息
+                this.mouse = {}
+                this.mouse.init = false
+                this.init()
+                this.initDrag()
+            }
+
+            //绝对定位初始化
+            init() {
+                this.el.style.position = 'absolute'
+                this.el.style.top = `${this.el.offsetTop}px`
+                this.el.style.left = `${this.el.offsetLeft}px`
+            }
+
+            // 拖动初始化
+            initDrag() {
+                this.el.addEventListener('mousedown', e => {
+                    if (/input|textarea/.test(e.target.tagName.toLowerCase())) return
+                    this.mouse.init = true
+                    this.mouse.offsetX = e.pageX - this.el.offsetLeft
+                    this.mouse.offsetY = e.pageY - this.el.offsetTop
+                    // 建立一个函数引用，进行销毁
+                    this.moveHandler = this.move.bind(this)
+                    this.upHanler = this.up.bind(this)
+                    window.addEventListener('mousemove', this.moveHandler)
+                    window.addEventListener('mouseup', this.upHanler)
+                })
+            }
+            // 拖动
+            move(e) {
+                if (!this.mouse.init) {
+                    return
+                }
+                this.el.style.left = e.pageX - this.mouse.offsetX  + 'px'
+                this.el.style.top = e.pageY - this.mouse.offsetY + 'px'
+            }
+            // 松开
+            up() {
+                this.mouse.init = false
+                console.log('ok')
+                window.removeEventListener('mousemove', this.moveHandler)
+                window.removeEventListener('mouseup', this.upHanler)
+            }
+        }
+        let drag1 = new Drag(document.querySelector('.drag'))
     </script>
 </body>
 
