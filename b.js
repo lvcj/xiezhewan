@@ -82,3 +82,55 @@ function Observer(q) {
         return false
     }
 }
+
+// 原型观察模式
+function ObserverProto () {
+    this.fns = []
+}
+
+let _pro = {
+    subscribe(fn) {
+        this.fns.push(fn)
+    },
+    unsubscribe(fn) {
+        this.fns = this.fns.filter(el => {
+            if (el !== fn) {
+                return el
+            }
+        })
+    },
+    update(o, thisObj) {
+        let scope = thisObj || window
+        this.fns.forEach(el => {
+            el.call(scope, o)
+        })
+    }
+}
+
+Object.assign(ObserverProto.prototype, _pro)
+
+// Class
+
+class ObserverCls {
+    constructor() {
+        this.fns = []
+    }
+
+    subscribe(fn) {
+        this.fns.push(fn)
+    }
+
+    unsubscribe(fn) {
+        this.fns = this.fns.filter(el => {
+            if (el !== fn) {
+                return el
+            }
+        })
+    }
+
+    update(o) {
+        this.fns.forEach(el => {
+            el(o)
+        })
+    }
+}
