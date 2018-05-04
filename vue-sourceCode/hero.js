@@ -24,6 +24,7 @@ function defineReactive (obj, key, val) {
             return val
         },
         set (newVal) {
+            if (newVal === val) return
             // 触发setter
             console.log(`我的${key}属性被修改了！`)
             console.log(Dep.target)

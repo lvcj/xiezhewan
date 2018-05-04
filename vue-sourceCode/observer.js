@@ -31,6 +31,7 @@ function defineReactive (obj, key, val, cb) {
         get: ()=>{
             /*....依赖收集等....*/
             /*Github:https://github.com/answershuto*/
+            return val
         },
         set:newVal=> {
             cb();/*订阅者收到消息的回调*/
