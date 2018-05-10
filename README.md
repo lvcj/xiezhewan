@@ -159,3 +159,10 @@ document.body.addEventListener('click', function (event) {
   }
 }, false);
 ```
+
+#### 基于vue/el-table的可编辑表格数据管理后台
+
+[预览地址](https://zouhangwithsweet.github.io/xiezhewan/editTable/#/dataflow)
+
+- 脚手架基于最新的vue-cli@3
+- 适用于后台接口数据发布和调试
