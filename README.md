@@ -168,7 +168,7 @@ document.body.addEventListener('click', function (event) {
 - 适用于后台接口数据发布和调试
 
 #### 常用原生组件，message、alert、loading、confirm
-
+[预览地址](https://zouhangwithsweet.github.io/xiezhewan/componentsCls/)
 - [x] 基于ES6 class构建，支持回调函数
 - [x] 监听`transitionend`监听
 - [ ] 兼容差
