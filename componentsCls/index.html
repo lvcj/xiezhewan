@@ -10,17 +10,15 @@
     <link rel="stylesheet" href="./css/loading.css">
     <style>
         .btn {
-            width: 80px;
-            height: 30px;
+            padding: 6px;
             text-align: center;
             border: none;
             outline: none;
             color: #393735;
             background-color: aquamarine;
             display: block;
-            position: absolute;
             margin-top: 20px;
-            left: 50%;
+            margin-left: 50%;
             transform: translateX(-50%);
             border-radius: 4px;
             cursor: pointer;
@@ -28,12 +26,14 @@
     </style>
 </head>
 <body>
-    <button class="btn" onclick="loading()">loading</button>
+    <button class="btn" onclick="loading(1)">loading1</button>
+    <button class="btn" onclick="loading(2)">loading2</button>
+    <button class="btn" onclick="loading(3)">loading3</button>
     <script src="./loading.js"></script>
     <script>
-        function loading() {
+        function loading(index) {
             let loading = new Loading({})
-            loading.open('正在加载', 1)
+            loading.open('正在加载', index)
             setTimeout(() => {
                 loading.close()
             }, 2000);
