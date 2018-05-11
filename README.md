@@ -166,3 +166,9 @@ document.body.addEventListener('click', function (event) {
 
 - 脚手架基于最新的vue-cli@3
 - 适用于后台接口数据发布和调试
+
+#### 常用原生组件，message、alert、loading、confirm
+
+- [x] 基于ES6 class构建，支持回调函数
+- [x] 监听`transitionend`监听
+- [] 兼容差
