@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/loading.css">
+    <style>
+        .btn {
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            border: none;
+            outline: none;
+            color: #393735;
+            background-color: aquamarine;
+            display: block;
+            position: absolute;
+            margin: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn" onclick="loading()">message</button>
+    <script src="./loading.js"></script>
+    <script>
+        function loading() {
+            let loading = new Loading({})
+            loading.open('正在加载', 1)
+            setTimeout(() => {
+                loading.close()
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

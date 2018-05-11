@@ -1,0 +1,48 @@
+:root{
+    /** font **/
+    --font-family:"Microsoft YaHei";
+    --font-size : 12px;
+    --font-color:#525e71;
+
+    /** 基础border**/
+    --base-bdcolor: #e1e1e1;
+    --base-bdstyle:solid;
+    --base-bdwidth:1px;
+
+    /** 主色系 **/
+    --main-color:#36cfc9;
+    /** input 下划线 **/
+    --input-bottom-color:#d9d9d9;
+    /** 全局背景颜色 **/
+    --bg-color:#fafafa;
+
+    /** 文字 超链接 item等划过样式 **/
+    --item-hover:rgba(0,0,0,.04);
+    --transition:all .2s ease-in-out;
+
+    /** button hover颜色 **/
+    --button-primary-hover: #42DAE0;
+    --button-hover: #fafafa;
+
+    /** button active颜色 **/
+    --button-primary-active: #04c5d4;
+    --button-active: #eeeeee;
+
+    /** border **/
+    --border-var :var(--base-bdwidth) var(--base-bdstyle) var(--base-bdcolor);
+    --border-main:var(--base-bdwidth) var(--base-bdstyle) var(--main-color);
+    --border-input:var(--base-bdwidth) var(--base-bdstyle) var(--input-bottom-color);
+    --border-handle:var(--base-bdwidth) var(--base-bdstyle) var(--main-color);
+
+    /** popover 弹层 **/
+    --popover-font-size: 12px;
+    --popover-arrow-size: 6px;
+    --popover-padding: 10px;
+    --popover-title-font-size: 13px;
+
+    --search-bg: #041024;
+    --search-border: #00a2ff;
+    --search-color: #9af5f6;
+
+    --boxShadow :0px 2px 10px 0px rgba(0,0,0,0.1), 0 1px rgba(0,0,0,0.1);
+}
