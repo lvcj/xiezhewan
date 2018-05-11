@@ -171,4 +171,4 @@ document.body.addEventListener('click', function (event) {
 
 - [x] 基于ES6 class构建，支持回调函数
 - [x] 监听`transitionend`监听
-- [] 兼容差
+- [ ] 兼容差
