@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="newslist">
+        <list-component v-bind:mes="parentlist">
+            <template scope="scopeobj">
+                <p>{{scopeobj.geti}}xxx</p>
+            </template>
+        </list-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript">
+    /**
+     * slot-scope可以访问子组件中slot上边的props属性
+    */
+        Vue.component('list-component', {
+            template: `
+                        <ul>
+                            <slot v-for="i in mes" :geti="i.con"></slot>
+                            <em v-if="!$scopedSlots.default" v-for="i in mes" :geti="i.con">{{i.con}}<br/></em>
+                        </ul>
+                    `, 
+            data: function () {
+                return {
+                }
+            },
+            mounted() {
+                console.log(this)
+            },
+            props: ['mes']
+        })
+
+        new Vue({
+            el: '.newslist',
+            data: {
+                parentlist: [{ con: "床前明月光" }, { con: "疑是地上霜" }, { con: "举头望明月" }, { con: "低头思故乡" }]
+            }
+        })
+    </script>
+</body>
+</html>
