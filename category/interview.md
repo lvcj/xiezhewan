@@ -1,4 +1,4 @@
-#### 记阿里妈妈的一次电面
+#### 一面
 
 * 使用 `requestAnimation` 替代定时器创建动画。
 * promise/Generator/async/await 含义，使用场景和出现意义
@@ -8,3 +8,13 @@
 * xxs攻击，如何注入尖括号
 * https和http2对比http的优点
 * prototype的意义和作用
+
+#### 二面
+
+* instanceof
+* object.freeze()
+* 变量提升
+* 任务队列
+* redux diff 算法
+* constructor，原型链，hasOwnProptery
+* 正则表达式
