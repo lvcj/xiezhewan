@@ -172,3 +172,11 @@ document.body.addEventListener('click', function (event) {
 - [x] 基于ES6 class构建，支持回调函数
 - [x] 监听`transitionend`监听
 - [ ] 兼容差
+
+#### webpack中路径解析问题
+> ~ 视为模块解析是 webpack 做的事，不是 css-loader 做的事。
+各类非 js 直接引用（import require）静态资源，依赖相对路径加载问题，都可以用 ~ 语法完美解决；
+例如 css module 中： @import "~@/style/theme"
+css 属性中： background: url("~@/assets/xxx.jpg")
+html 标签中： `<img src="~@/assets/xxx.jpg" alt="alias">`
+如果找不到alias的配置，～直接会被解析到node-modules
