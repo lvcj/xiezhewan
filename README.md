@@ -179,4 +179,4 @@ document.body.addEventListener('click', function (event) {
 例如 css module 中： @import "~@/style/theme"
 css 属性中： background: url("~@/assets/xxx.jpg")
 html 标签中： `<img src="~@/assets/xxx.jpg" alt="alias">`
-如果找不到alias的配置，～直接会被解析到node-modules
+如果找不到alias的配置，～直接会被解析到node-modules
