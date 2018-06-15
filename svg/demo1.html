@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .circle-line {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 4px solid #6addbc;
+    clip-path: polygon(100% 0, 100% 67%, 50% 40%, 0 67%, 0 0);
+  }
+</style>
+<body>
+  <!-- <div class="circle-line">
+  </div> -->
+  <div>
+    <canvas id="mycanvas" style="height: 500px; width:500px;" width="500" height="500"></canvas>
+  </div>
+  <script>
+    let canvas = document.getElementById('mycanvas')
+    let ctx = canvas.getContext('2d')
+    let index = 1
+    function draw() {
+      index+= 0.003
+      if (index > 2) {
+        index = 1
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.beginPath()
+      ctx.arc(250, 250, 200, Math.PI,  index * Math.PI);
+      ctx.strokeStyle = "green";  
+      ctx.lineWidth = 2;  
+      ctx.fillStyle = "red"
+      // ctx.fill()
+      ctx.stroke();
+      ctx.beginPath()
+      ctx.arc(250 + Math.cos(index * Math.PI) * 200, 250 + Math.sin(index * Math.PI) * 200, 4, 0, 2 * Math.PI)
+      ctx.fillStyle = 'red'
+      ctx.fill()
+      requestAnimationFrame(draw)
+    }
+    requestAnimationFrame(draw)
+  </script>
+</body>
+</html>

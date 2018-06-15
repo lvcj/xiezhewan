@@ -75,8 +75,10 @@ class Loading {
     close() {
         if (!document.querySelector(`.df-loading__wrapper`)) return
         let nodes = document.querySelectorAll(`.df-loading__wrapper`);
-        nodes.forEach(n => {
-            document.body.removeChild(n)
-        })
+        if (nodes) {
+            nodes.forEach(n => {
+                document.body.removeChild(n)
+            })
+        }
     }
 }
