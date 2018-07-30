@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ol,
+    ul,
+    li {
+      list-style: none;
+    }
+
+    body {
+      background-color: grey;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 10px;
+      margin: 10px;
+      min-height: 300px;
+    }
+
+    .feed {
+      display: flex;
+      flex-wrap: wrap
+    }
+
+    .feed ul,
+    .feed li {
+      display: contents;
+    }
+
+    .card {
+      flex: 1 0 40%;
+    }
+  </style>
+  <style>
+    .chat {
+      background: #fff;
+      border: 10px solid #000;
+      bottom: 0;
+      font-size: 10px;
+      position: fixed;
+      right: 0;
+      width: 300px;
+    }
+
+    .messages {
+      border-bottom: 5px solid #000;
+      overflow: auto;
+      padding: 10px;
+      max-height: 300px;
+    }
+
+    .message {
+      background: #000;
+      border-radius: 5px;
+      color: #fff;
+      margin: 0 20% 10px 0;
+      padding: 10px;
+    }
+
+    .messages li:last-child .message {
+      margin-bottom: 0;
+    }
+
+    .input {
+      border: none;
+      display: block;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .messages {
+      overscroll-behavior-y: contain;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chat">
+    <div class="messages">
+      <ul>
+        <li>
+          <div class="message">Message 1</div>
+        </li>
+        <li>
+          <div class="message">Message 2</div>
+        </li>
+        <li>
+          <div class="message">Message 3</div>
+        </li>
+        <li>
+          <div class="message">Message 4</div>
+        </li>
+        <li>
+          <div class="message">Message 5</div>
+        </li>
+        <li>
+          <div class="message">Message 6</div>
+        </li>
+        <li>
+          <div class="message">Message 7</div>
+        </li>
+        <li>
+          <div class="message">Message 8</div>
+        </li>
+        <li>
+          <div class="message">Message 9</div>
+        </li>
+        <li>
+          <div class="message">Message 10</div>
+        </li>
+      </ul>
+    </div>
+    <input type="text" class="input"> </div>
+  <div class="container">
+    <ul class="feed">
+      <li>
+        <div class="card">Card 1</div>
+      </li>
+      <li>
+        <div class="card">Card 2</div>
+      </li>
+      <li>
+        <div class="card">Card 3</div>
+      </li>
+      <li>
+        <div class="card">Card 4</div>
+      </li>
+      <li>
+        <div class="card">Card 5</div>
+      </li>
+      <li class="nested">
+        <ul>
+          <li>
+            <div class="card">Card A</div>
+          </li>
+          <li>
+            <div class="card">Card B</div>
+          </li>
+          <li>
+            <div class="card">Card C</div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <div class="card">Card 6</div>
+      </li>
+      <li>
+        <div class="card">Card 7</div>
+      </li>
+      <li>
+        <div class="card">Card 8</div>
+      </li>
+      <li>
+        <div class="card">Card 9</div>
+      </li>
+      <li>
+        <div class="card">Card 10</div>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
