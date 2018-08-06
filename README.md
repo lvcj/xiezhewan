@@ -182,3 +182,6 @@ html 标签中： `<img src="~@/assets/xxx.jpg" alt="alias">`
 如果找不到alias的配置，～直接会被解析到node-modules
 
 #### 内联替换元素 img 可以通过设置 max-width max-height 以及父元素 flex实现自适应居中
+
+####
+<img src="https://api.gushi.ci/all.svg">
