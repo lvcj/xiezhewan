@@ -183,5 +183,5 @@ html 标签中： `<img src="~@/assets/xxx.jpg" alt="alias">`
 
 #### 内联替换元素 img 可以通过设置 max-width max-height 以及父元素 flex实现自适应居中
 
-####
+#### 古诗词
 <img src="https://api.gushi.ci/all.svg">
