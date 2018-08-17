@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
-  <svg version="1.1"
-     baseProfile="full"
-     width="300" height="200"
-     xmlns="http://www.w3.org/2000/svg">
+  <svg version="1.1" baseProfile="full" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
-  <rect width="100%" height="100%" fill="red" />
+    <rect width="100%" height="100%" fill="red" />
 
-  <circle cx="150" cy="100" r="80" fill="green" />
+    <circle cx="150" cy="100" r="80" fill="green" />
 
-  <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
+    <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
 
-</svg>
-<svg width="200" height="250">
-  <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
-      stroke="green" fill="transparent" stroke-width="5"/>
-</svg>
-<svg 
-     xmlns="http://www.w3.org/2000/svg" 
-     width="400" 
-     height="210" 
-     viewBox="0 0 200 105"
->
-  <g id="dial">
-    <path stroke="#fc6e51" stroke-width="45" d="M 70,48 A 60 60 0 0 0 40,100" />
-    <path stroke="#ffbf08" stroke-width="45" d="M 130,48 A 60 60 0 0 0 70,48" />
-    <path stroke="#33c176" stroke-width="45" d="M 160,100 A 60 60 0 0 0 130,48" />
-  </g>
-  
-  <g id="satellite">
-    <path fill="none" stroke="#ccc" stroke-width="0.8" d="M 192,100 A 92 92 0 0 0 8,100" />
-    <circle cx="8" cy="100" r="2.5" />
-    <circle cx="100" cy="8" r="2.5" />
-    <circle cx="192" cy="100" r="2.5" />
-  </g>
-  
-  <g id="pointer">
-    <circle cx="100" cy="95" r="5" />
-    <path d="M 92.5 92.5 h 5 v -40 h 5 v 40 zM 92.5 52.5 h 15 L 100 43 z " />
-  </g>
-  
-</svg>
+  </svg>
+  <svg width="200" height="250" viewBox="0 0 200 250">
+    <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180" stroke="green" fill="transparent"
+      stroke-width="5" />
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="400" height="210" viewBox="0 0 200 105">
+    <g id="dial">
+      <path stroke="#fc6e51" stroke-width="45" d="M 70,48 A 60 60 0 0 0 40,100" />
+      <path stroke="#ffbf08" stroke-width="45" d="M 130,48 A 60 60 0 0 0 70,48" />
+      <path stroke="#33c176" stroke-width="45" d="M 160,100 A 60 60 0 0 0 130,48" />
+    </g>
+
+    <g id="satellite">
+      <path fill="none" stroke="#ccc" stroke-width="0.8" d="M 192,100 A 92 92 0 0 0 8,100" />
+      <circle cx="8" cy="100" r="2.5" />
+      <circle cx="100" cy="8" r="2.5" />
+      <circle cx="192" cy="100" r="2.5" />
+    </g>
+
+    <g id="pointer">
+      <circle cx="100" cy="95" r="5" />
+      <path d="M 92.5 92.5 h 5 v -40 h 5 v 40 zM 92.5 52.5 h 15 L 100 43 z " />
+    </g>
+
+  </svg>
+  <svg width="100" height="100">
+      <rect x="0" y="0" width="30" height="30"/>
+      <circle cx="25" cy="75" r="20" fill="red" stroke="grey" stokeWidth="2"/>
+      <rect x="60" y="10" rx="10" ry="10" width="30" height="30"/>
+      <ellipse cx="75" cy="75" rx="20" ry="5"/>
+  </svg>
+  <svg width="120" height="150">
+    <line x1="10" x2="50" y1="110" y2="150" stroke="red"/>
+    <polyline points="60 110, 65 120, 70 115, 75 130, 80 125, 85 140, 90 135, 95 150, 100 145" stroke="red"/>
+    <path fill="red" d="M10 10 H 90 V 90 H 10 L 10 10"/>
+    <path d="M10 10 H 90 V 90 H 10 Z" fill="transparent" stroke="black"/>
+  </svg>
 </body>
+
 </html>
