@@ -1,0 +1,26 @@
+{
+  "name": "ts-vue",
+  "version": "1.0.0",
+  "description": "ts-begin",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ts",
+    "vue"
+  ],
+  "author": "zouhang",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "ts-loader": "^4.5.0",
+    "typescript": "^3.0.1",
+    "vue": "^2.5.17",
+    "vue-loader": "^15.4.0",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
