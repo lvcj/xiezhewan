@@ -1,13 +1,31 @@
 var path = require('path')
 var webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode: 'production',
+  mode: process.env.NODE_ENV,
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    publicPath: process.env.NODE_ENV === 'development' ? '/' : '/dist/',
+    filename: 'build.[hash].js'
+  },
+  optimization: {
+    minimizer: [
+      // we specify a custom UglifyJsPlugin here to get source maps in production
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: false,
+          ecma: 6,
+          mangle: true
+        },
+        sourceMap: true
+      })
+    ]
   },
   module: {
     rules: [
@@ -49,9 +67,16 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'webpack 教程',
+      template: './index.html'
+    }),
+  ],
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    port: 8083,
   },
   performance: {
     hints: false
@@ -68,14 +93,30 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
+    new CleanWebpackPlugin(['dist']),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
   ])
+}
+
+if (process.env.NODE_ENV === 'development') {
+  module.exports.serve = {
+    // 配置监听端口，默认值 8080
+    port: 8083,
+
+    // add: 用来给服务器的 koa 实例注入 middleware 增加功能
+    add: app => {
+      /*
+      配置 SPA 入口
+
+      SPA 的入口是一个统一的 html 文件，比如
+      http://localhost:8080/foo
+      我们要返回给它
+      http://localhost:8080/index.html
+      这个文件
+      */
+      console.log(app)
+    }
+  }
 }
