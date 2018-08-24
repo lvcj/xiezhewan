@@ -231,3 +231,13 @@ export default {
   },
 }
 ```
+
+### vue 组见监听 hook
+```js
+<child
+  @hook:beforeCreate="handleChildBeforeCreate"
+  @hook:created="handleChildCreated"
+  @hook:mounted="handleChildMounted"
+  @hook:生命周期钩子
+ />
+```
