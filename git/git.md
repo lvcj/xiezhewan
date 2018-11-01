@@ -29,3 +29,4 @@ git push origin develop
 git add ***
 git commit -m "*****"
 git push origin develop
+>git stash git format-patch
