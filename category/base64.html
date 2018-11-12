@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="file" id="file-input">
+  <img src="" id="img">
+  <button id="btn">上传</button>
+  <script>
+    function getObjectURL(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+
+    function getUrlBase64(url, ext, target, callback) {
+      var canvas = document.createElement("canvas");   //创建canvas DOM元素
+      var ctx = canvas.getContext("2d");
+      var img = new Image;
+      img.crossOrigin = 'Anonymous';
+      img.src = url;
+      img.onload = function () {
+          console.log(this.width, this.height)
+          canvas.height = this.height; //指定画板的高度,自定义
+          canvas.width = this.width; //指定画板的宽度，自定义
+          ctx.drawImage(img, 0, 0); //参数可自定义
+          var dataURL = canvas.toDataURL("image/" + ext);
+          callback.call(this, dataURL); //回掉函数获取Base64编码
+          canvas = null;
+      };
+    }
+
+    window.onload = function() {
+      console.log('ok')
+      var files = null
+      var fileInput = document.getElementById('file-input')
+      var btn = document.getElementById('btn')
+      var img = document.getElementById('img')
+      fileInput.oninput = function () {
+        files = fileInput.files
+      }
+      btn.onclick = function () {
+        console.log(files)
+        console.log(getObjectURL(files[0]))
+        img.src = getObjectURL(files[0])
+        console.log(img.getBoundingClientRect())
+        getUrlBase64(getObjectURL(files[0]), 'png', null ,function(base64) {
+          console.log(base64)
+        })
+      }
+    }
+  </script>
+</body>
+</html>
