@@ -244,6 +244,8 @@ export default {
 
 #### 闭包
 一个函数b() 保持对一个函数的作用域的引用，这个引用就是闭包。
+闭包包装模块
+![image](./images/bibao.png)
 
 ### webpack 异步加载原理
-JSONP[https://segmentfault.com/a/1190000011435407]
+[JSONP](https://segmentfault.com/a/1190000011435407)
