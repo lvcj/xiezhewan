@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <input type="file" id="file" onchange="showPreview(this, 'portrait')" />
+    <img src="" id="portrait" style="width: 200px; height: 200px; display: block;" />
+    <script>
+    function showPreview(source, imgId) {
+      var file = source.files[0];
+      if(window.FileReader) {
+        var fr = new FileReader();
+        fr.onloadend = function(e) {
+          document.getElementById(imgId).src = e.target.result;
+        }
+        fr.readAsDataURL(file);
+      }
+    }
+    </script>
+</body>
+</html>

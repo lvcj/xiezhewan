@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <label>照相机</label>
+    <input type="file" id='image' accept="image/*" capture='camera'>
+    <br>
+    <label>摄像机</label>
+    <input type="file" id='video' accept="video/*" capture='camcorder'>
+    <input type="file" id="file" multiple>
+    <img src=""  style="width: 200px; height: 200px; display: block;">
+  </div>
+<script src="../util/ua.js"></script>
+<script>
+  function getObjectURL(file) {
+    var url = null ;
+    if (window.createObjectURL!=undefined) { // basic
+      url = window.createObjectURL(file) ;
+    } else if (window.URL!=undefined) { // mozilla(firefox)
+      url = window.URL.createObjectURL(file) ;
+    } else if (window.webkitURL!=undefined) { // webkit or chrome
+      url = window.webkitURL.createObjectURL(file) ;
+    }
+    return url ;
+  }
+  function showPreview(source, imgId) {
+    var file = source.files[0];
+    if(window.FileReader) {
+      var fr = new FileReader();
+      fr.onloadend = function(e) {
+        document.querySelector(imgId).src = e.target.result;
+      }
+      fr.readAsDataURL(file);
+    }
+  }
+  window.onload = function () {
+    let file = null
+    const allFile = document.querySelector('input')
+    const img = document.querySelector('img')
+    allFile.onchange = function() {
+      file = allFile.files[0]
+      showPreview(allFile, 'img')
+    }
+    if (isiOS()) {
+      allFile.removeAttribute('capture')
+    }
+    console.log(navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position)
+      console.log(position.coords.latitude, position.coords.longitude);
+    })
+  }
+</script>
+</body>
+</html>

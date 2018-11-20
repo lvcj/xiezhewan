@@ -249,3 +249,7 @@ export default {
 
 ### webpack 异步加载原理
 [JSONP](https://segmentfault.com/a/1190000011435407)
+
+#### input change 事件区别
+- input 即刻触发 change 失焦判断是否更改触发
+- file的时候最好使用change，否则无法捕捉到完整文件
