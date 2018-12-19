@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<button id="logina" type="button">FaceBook登录</button>
+<button class="login-out">登出</button>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '1486948808103816',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v3.2'
+      });
+    };
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script>
+    document.getElementById('logina').onclick = function(){//登录
+      FB.login(function(response) {
+        if (response.status === 'connected') {
+          FB.api('/me', function(response) {
+              console.log('Successful login for: ')
+              console.log(response)
+            })
+          FB.getLoginStatus((res) => {
+            console.log(res)
+          })
+        } else {
+          console.log('该用户没有登录');
+        }
+      }, {scope: 'public_profile,email'});
+    }
+    document.querySelector('.login-out').onclick = function() {
+      FB.logout(function(response) {
+        console.log("用户已退出");
+      })
+    }
+  </script>
+</body>
+</html>

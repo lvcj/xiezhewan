@@ -53,3 +53,22 @@ bmiTell weight height
     | bmi <= 30.0 = "You're fat! Lose some weight, fatty!"  
     | otherwise   = "You're a whale, congratulations!"  
     where bmi = weight / height ^ 2
+
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
+  where (f:_) = firstname
+        (l:_) = lastname
+
+cylinder :: RealFloat a => a -> a -> a
+cylinder r h =
+  let sideArea = 2 * pi * r * h
+      topArea = pi * r ^2
+  in sideArea + 2 * topArea
+
+maximum' :: Ord a => [a] -> a
+maximum' [] = error "maximum of empty list"
+maximum' [x] = x
+maximum' (x:xs)
+  | x > maxTail = x
+  | otherwise = maxTail
+  where maxTail = maximum' xs
