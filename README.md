@@ -253,3 +253,10 @@ export default {
 #### input change 事件区别
 - input 即刻触发 change 失焦判断是否更改触发
 - file的时候最好使用change，否则无法捕捉到完整文件
+
+#### 赋值运算符 “ = ”
+JavaScript 赋值运算符返回的值是被赋予的值
+
+```Javascript
+    let a = 0 // => 返回值是 0
+```

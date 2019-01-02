@@ -65,6 +65,8 @@ cylinder r h =
       topArea = pi * r ^2
   in sideArea + 2 * topArea
 
+-- recursion 递归
+
 maximum' :: Ord a => [a] -> a
 maximum' [] = error "maximum of empty list"
 maximum' [x] = x
@@ -72,3 +74,51 @@ maximum' (x:xs)
   | x > maxTail = x
   | otherwise = maxTail
   where maxTail = maximum' xs
+
+maximumf :: Ord a => [a] -> a
+maximumf [] = error "maximum of empty list"
+maximumf [x] = x
+maximumf (x:xs) = max x (maximumf xs)
+
+replicate' :: (Num i, Ord i) => i -> a ->[a]
+replicate' n x
+  | n <= 0 = []
+  | otherwise = x:(replicate' (n-1) x)
+
+take' :: (Num i, Ord i) => i -> [a] -> [a]
+take' n _
+  | n <= 0 = []
+take' _ [] = []
+take' n (x: xs) = x: (take' (n-1) xs)
+
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x:xs) = reverse' xs ++ [x]
+
+repeat' :: a -> [a]
+repeat' x = x:(repeat' x)
+
+zip' :: [a] -> [b] -> [(a, b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x, y):zip' xs ys
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+elem' a (s:sx)
+  | a == s = True
+  | otherwise = a `elem'` sx
+
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x:xs) =
+  let smallSorted = quickSort [a | a <- xs, a <= x]
+      biggerSorted = quickSort [a | a <- xs, a > x]
+  in smallSorted ++ [x] ++ biggerSorted
+
+quickSort' :: (Ord a) => [a] -> [a]
+quickSort' [] = []
+quickSort' (x:xs) =
+  smallSorted ++ [x] ++ biggerSorted
+  where smallSorted = quickSort' [a | a <- xs, a <= x]
+        biggerSorted = quickSort' [a | a <- xs, a > x]
