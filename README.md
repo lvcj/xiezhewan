@@ -260,3 +260,22 @@ JavaScript 赋值运算符返回的值是被赋予的值
 ```Javascript
     let a = 0 // => 返回值是 0
 ```
+
+### 递归的思想
+> 我们已经写了不少递归了，也许你已经发觉了其中的固定模式：先定义一个边界条件，再定义个函数，让它从一堆元素中取一个并做点事情后，把余下的元素重新交给这个函数。 这一模式对 List、Tree 等数据结构都是适用的。例如，sum 函数就是一个 List 头部与其尾部的 sum 的和。一个 List 的积便是该 List 的头与其尾部的积相乘的积，一个 List 的长度就是 1 与其尾部长度的和. 等等  
+
+```hs
+    quickSort :: (Ord a) => [a] -> [a]
+    quickSort [] = []
+    quickSort (x:xs) =
+    let smallSorted = quickSort [a | a <- xs, a <= x]
+        biggerSorted = quickSort [a | a <- xs, a > x]
+    in smallSorted ++ [x] ++ biggerSorted
+
+    quickSort' :: (Ord a) => [a] -> [a]
+    quickSort' [] = []
+    quickSort' (x:xs) =
+    smallSorted ++ [x] ++ biggerSorted
+    where smallSorted = quickSort' [a | a <- xs, a <= x]
+          biggerSorted = quickSort' [a | a <- xs, a > x]
+```

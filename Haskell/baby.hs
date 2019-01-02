@@ -122,3 +122,11 @@ quickSort' (x:xs) =
   smallSorted ++ [x] ++ biggerSorted
   where smallSorted = quickSort' [a | a <- xs, a <= x]
         biggerSorted = quickSort' [a | a <- xs, a > x]
+
+stepSum' :: Num a => [a] -> a
+stepSum' [] = 1
+stepSum' (x:xs) = x * (stepSum' xs)
+
+stepSums :: Num a => [a] -> a
+stepSums [] = 0
+stepSums (x:xs) = x + (stepSums xs)
