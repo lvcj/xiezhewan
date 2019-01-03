@@ -62,7 +62,7 @@ initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
 cylinder :: RealFloat a => a -> a -> a
 cylinder r h =
   let sideArea = 2 * pi * r * h
-      topArea = pi * r ^2
+      topArea = pi * (r ^ 2)
   in sideArea + 2 * topArea
 
 -- recursion 递归
@@ -130,3 +130,11 @@ stepSum' (x:xs) = x * (stepSum' xs)
 stepSums :: Num a => [a] -> a
 stepSums [] = 0
 stepSums (x:xs) = x + (stepSums xs)
+
+-- haskell 的高阶函数，本质上所有的函数都是只有一个参数，多参数是本质上 Haskell 的 function 都是 curried function
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) = 
+  let smaller = quicksort [a | a <- xs, a <= x]
+      bigger = quicksort [a | a <- xs, a > x]
+  in smaller ++ [x] ++ bigger
