@@ -123,6 +123,13 @@ quickSort' (x:xs) =
   where smallSorted = quickSort' [a | a <- xs, a <= x]
         biggerSorted = quickSort' [a | a <- xs, a > x]
 
+bubbleSort :: (Ord a) => [a] -> [a]
+bubbleSort [] = []
+bubbleSort [x] = [x]
+bubbleSort (x:y:xs)
+  | x > y = y : bubbleSort(x:xs)
+  | otherwise = x : bubbleSort(y:xs)
+
 stepSum' :: Num a => [a] -> a
 stepSum' [] = 1
 stepSum' (x:xs) = x * (stepSum' xs)
@@ -138,3 +145,17 @@ quicksort (x:xs) =
   let smaller = quicksort [a | a <- xs, a <= x]
       bigger = quicksort [a | a <- xs, a > x]
   in smaller ++ [x] ++ bigger
+
+multThree :: (Num a) => a -> a -> a -> a
+multThree x y z = x * y * z
+
+compareWithHundred :: (Num a, Ord a) => a -> Ordering
+compareWithHundred = compare 100
+-- 中缀函数
+isUpperAlphanum :: Char -> Bool
+isUpperAlphanum = (`elem` ['A'..'Z'])
+
+-- haskell high-order-function
+applyTwice :: (a -> a) -> a -> a
+applyTwice f x = f (f x)
+

@@ -1,12 +1,14 @@
 package main
 
 import "fmt"
+var a = 5.0
 
 func variable() {
-	var a int
+	a := 5.0
 	var s string
-
-	fmt.Printf("%d %q\n", a, s)
+	c := int(a)
+	fmt.Println(c)
+	fmt.Printf(s)
 }
 func variableValue() {
 	var a, b int = 3, 4
