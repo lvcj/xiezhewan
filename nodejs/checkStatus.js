@@ -84,7 +84,7 @@ async function main(extension = 'png') {
                         console.log(error.stack);
                         console.log('Error code: ' + error.code);
                       }
-                      console.log('Child Process STDOUT: ' + stdout);
+                    console.log('Child Process STDOUT: ' + stdout);
                 })
             }
         })
