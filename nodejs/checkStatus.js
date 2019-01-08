@@ -18,7 +18,7 @@ const _dir = path => {
             if (err) reject(err)
             resolve(data)
         })
-  })
+    })
 }
 
 // 读取文件 buffer
@@ -33,9 +33,8 @@ const _rf = path => {
 
 // read iconname
 async function readIcon() {
-    const filePath = path.resolve(__dirname, './assets/image')
+    const filePath = path.resolve(__dirname, './src/assets/image')
     let res = await _dir(filePath)
-    
     return res.map(item => ({
         name: item.split('.')[0],
         isUsed: false,
@@ -47,10 +46,10 @@ let count = 0
 let res = {}
 // iconObj 直接传递引用，省事
 async function readImports(filePath, icons, callBack) {
-
     const allFiles = await _dir(filePath)
     allFiles.forEach(async file => {
         const childPath = path.join(filePath, file)
+        if (file === 'assets') return
         let resp = await _r(childPath)
         if (resp.isFile()) {
             count++
@@ -71,20 +70,27 @@ async function readImports(filePath, icons, callBack) {
     })
 }
 
-async function main(extension = 'png') {
-    const importsPath = path.resolve(__dirname, './views')
+async function main(extension = 'svg') {
+    const importsPath = path.resolve(__dirname, './src')
     let allIcons = await readIcon()
+
     readImports(importsPath, allIcons, (res) => {
-        const filePath = path.resolve(__dirname, './assets/image')
+        const filePath = path.resolve(__dirname, './src/assets/image')
         allIcons.forEach(item => {
             if (!item.isUsed) {
-                console.log(item)
                 exec(`rm ${path.join(filePath, `${item.name}.${extension}`)}`, (error, stdout, stderr) => {
                     if (error) {
-                        console.log(error.stack);
-                        console.log('Error code: ' + error.code);
+                        console.log(error.stack)
+                        console.log('Error code: ' + error.code)
                       }
-                    console.log('Child Process STDOUT: ' + stdout);
+                    console.log('Child Process STDOUT: ' + stdout)
+                })
+                exec(`rm ${path.join(filePath, `${item.name}.png`)}`, (error, stdout, stderr) => {
+                    if (error) {
+                        console.log(error.stack)
+                        console.log('Error code: ' + error.code)
+                      }
+                    console.log('Child Process STDOUT: ' + stdout)
                 })
             }
         })
