@@ -71,12 +71,23 @@ async function readImports(filePath, icons, callBack) {
     })
 }
 
-async function main() {
+async function main(extension = 'png') {
     const importsPath = path.resolve(__dirname, './views')
     let allIcons = await readIcon()
     readImports(importsPath, allIcons, (res) => {
-        console.log(allIcons)
-        console.log(res)
+        const filePath = path.resolve(__dirname, './assets/image')
+        allIcons.forEach(item => {
+            if (!item.isUsed) {
+                console.log(item)
+                exec(`rm ${path.join(filePath, `${item.name}.${extension}`)}`, (error, stdout, stderr) => {
+                    if (error) {
+                        console.log(error.stack);
+                        console.log('Error code: ' + error.code);
+                      }
+                      console.log('Child Process STDOUT: ' + stdout);
+                })
+            }
+        })
     })
 }
 
