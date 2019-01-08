@@ -10,6 +10,10 @@ func variable() {
 	fmt.Println(c)
 	fmt.Printf(s)
 }
+func types() {
+	aVar := 10
+	fmt.Println(aVar == 5)
+}
 func variableValue() {
 	var a, b int = 3, 4
 	var s string = "abc"
