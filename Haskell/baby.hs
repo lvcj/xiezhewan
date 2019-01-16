@@ -1,3 +1,5 @@
+import Data.List()
+
 douleMe :: Num a => a -> a 
 douleMe x = x + x
 
@@ -159,3 +161,26 @@ isUpperAlphanum = (`elem` ['A'..'Z'])
 applyTwice :: (a -> a) -> a -> a
 applyTwice f x = f (f x)
 
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ [] _= []
+zipWith' _ _ [] = []
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+
+flip' :: (a -> b -> c) -> (b -> a -> c)  
+flip' f x y = f y x
+
+highOrderQuicksort :: Ord a => [a] -> [a]
+highOrderQuicksort [] = []
+highOrderQuicksort (x:xs) =
+  smallSorted ++ [x] ++ biggerSorted
+  where smallSorted = highOrderQuicksort (filter (<= x) xs)
+        biggerSorted = highOrderQuicksort (filter (> x) xs)
+
+addThree :: Num a => a -> a -> a -> a
+addThree = \x -> \y -> \z -> x + y + z
+
+sum' :: Num a => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+-- @ 是 as 的语法糖
+-- map (\l@(x:xs) -> (x,length l)) . group . sort $ [1,1,1,1,2,2,2,2,3,3,2,2,2,5,6,7]
