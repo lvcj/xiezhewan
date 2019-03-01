@@ -279,3 +279,29 @@ JavaScript 赋值运算符返回的值是被赋予的值
     where smallSorted = quickSort' [a | a <- xs, a <= x]
           biggerSorted = quickSort' [a | a <- xs, a > x]
 ```
+
+#### 1px border
+```stylus
+border-1px($color)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ' '
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.7)
+      transform: scaleY(0.7)
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+```
