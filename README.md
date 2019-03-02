@@ -305,3 +305,14 @@ border-1px($color)
       -webkit-transform: scaleY(0.5)
       transform: scaleY(0.5)
 ```
+
+#### on-click in Vue jsx
+**onClick** or **nativeOnClick** 
+```vue
+<div on-click={this.handler}>
+</div>
+// with arguments, you should use a arrow function
+// also you can use this.handler.bind(this, ...args)
+<div on-click={() => this.handler(args)}>
+</div>
+```
