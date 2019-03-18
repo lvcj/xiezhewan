@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+
 var a = 5.0
 
 func variable() {
@@ -21,7 +22,7 @@ func variableValue() {
 	fmt.Println(a, b, s)
 }
 
-func main()  {
+func main() {
 	fmt.Println("hello world")
 	variable()
 	variableValue()
