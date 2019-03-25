@@ -22,8 +22,8 @@ func variableValue() {
 	fmt.Println(a, b, s)
 }
 
-func main() {
-	fmt.Println("hello world")
-	variable()
-	variableValue()
-}
+// func main() {
+// 	fmt.Println("hello world")
+// 	variable()
+// 	variableValue()
+// }
