@@ -4,7 +4,7 @@
 
 interface Window {
   dkBridge: {
-    takePhoto: () => void;
+    takePhoto: (type?: string) => void;
     takePhotoCb?: (json: {
       name: string,
       type: string,
@@ -18,9 +18,9 @@ window.dkBridge.takePhotoCb = json => {
 }
 
 // promise
-const takePhoto = function() {
+const takePhoto = function(type: string) {
   return new Promise((resolve, reject) => {
-    window.dkBridge.takePhoto()
+    window.dkBridge.takePhoto(type)
     window.dkBridge.takePhotoCb = json => {
       resolve(json)
       if (!json) {
