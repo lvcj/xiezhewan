@@ -3,3 +3,4 @@
 */**/node_modules
 /go/bin/**
 /go/pkg
+package-lock.json
