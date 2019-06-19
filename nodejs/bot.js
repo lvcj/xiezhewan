@@ -3,6 +3,6 @@ axios.post('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=4f57dd5f-48f6-4
   "msgtype": "markdown",
    "agentid" : 1,
    "markdown": {
-        "content": "### 如何使用 docker 部署 Vue 项目呢？ \n > [点击](https://juejin.im/post/5cce4b1cf265da0373719819)"
+        "content": "#### 使用Blue Ocean生成Pipeline \n > [点击](https://jenkins.io/zh/doc/tutorials/create-a-pipeline-in-blue-ocean/)"
   }
 }).then(res => console.log(res)).catch(err => console.log(err))
