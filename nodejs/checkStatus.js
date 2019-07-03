@@ -97,4 +97,4 @@ async function main(extension = 'svg') {
     })
 }
 
-main()
+export default main
