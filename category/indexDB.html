@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let request = window.indexedDB.open('mydb', 1)
+
+    request.onsuccess = e => {
+      let db = e.target.result
+      console.log('数据库连接成功')
+    }
+
+    request.onerror = e => {
+      console.log('数据库连接失败')
+    }
+
+    request.onupgradeneeded = e => {
+      let db = e.target.result
+      console.log('数据库升级')
+    }
+  </script>
+</body>
+</html>

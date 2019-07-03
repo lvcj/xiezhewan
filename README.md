@@ -308,7 +308,7 @@ border-1px($color)
 
 #### on-click in Vue jsx
 **onClick** or **nativeOnClick** 
-```vue
+```jsx
 <div on-click={this.handler}>
 </div>
 // with arguments, you should use a arrow function
@@ -316,3 +316,40 @@ border-1px($color)
 <div on-click={() => this.handler(args)}>
 </div>
 ```
+
+#### 使用 toLocalString 格式化货币
+
+```ts
+let price = 1024;
+price.toLocalString(); // 1,024
+
+price = 1669999
+price.toLocalString('en-IN'); // 印度 1,66,999
+
+// 使用 options 参数
+price = 2499;
+price.toLocaleString('en-IN', {
+  style: 'currency',
+  currency: 'INR'
+}); // ₹ 2,499.00
+
+// currency 表示货币
+price = 2499;
+price.toLocaleString('en-IN', {
+  style: 'currency',
+  currency: 'INR',
+  minimumFractionDigits: 0
+});
+// => "₹ 2,499"
+/**
+ * style：可选值为 decimal（小数）、currency（货币）或 percent（百分比）
+ * currency: 货币符号
+ */
+```
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)
+
+#### Intl 对象
+
+Intl 对象是 ECMAScript 国际化 API 的一个命名空间，它提供了精确的字符串对比、数字格式化，和日期时间格式化。Collator，NumberFormat 和 DateTimeFormat 对象的构造函数是 Intl 对象的属性。本页文档内容包括了这些属性，以及国际化使用的构造器和其他语言的方法等常见的功能。
+
+[MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl)
