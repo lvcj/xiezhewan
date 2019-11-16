@@ -353,3 +353,76 @@ price.toLocaleString('en-IN', {
 Intl 对象是 ECMAScript 国际化 API 的一个命名空间，它提供了精确的字符串对比、数字格式化，和日期时间格式化。Collator，NumberFormat 和 DateTimeFormat 对象的构造函数是 Intl 对象的属性。本页文档内容包括了这些属性，以及国际化使用的构造器和其他语言的方法等常见的功能。
 
 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl)
+
+### 轮询封装
+
+使用 `setTimeout` 递归来代替 `setInterval`；一避免函数执行时间过长，导致 `setInterval` 跳过的现象。
+```ts
+// 轮询函数结果
+const polling = async (
+  func: Function,
+  assert: (resp: any) => boolean,
+  count = 8,
+  interval = 2000
+) => {
+  /**
+   * 函数结果
+   */
+  let resp: any = null
+  /**
+   * 计时器 Id
+   */
+  let id: any = null
+  /**
+   * 内部计数
+   */
+  let _count = 0
+  // ------------------------------ 返回值用 promise 包裹一下 ------------------------------
+  return new Promise(async (resolve, reject) => {
+    // 轮询方法
+    async function cstmInterval(
+      func: Function,
+      interval: number
+    ) {
+      if (_count === count) {
+        // 次数到了就不执行
+        clearCstmInterval(id)
+        resolve(resp)
+        return
+      }
+      id = window.setTimeout(async () => {
+        try {
+          resp = await func()
+          _count++
+          if (!assert(resp)) {
+            cstmInterval(func, interval)
+          } else {
+            clearCstmInterval(id)
+            resolve(resp)
+          }
+        } catch (error) {
+          reject(error)
+        }
+      }, interval)
+    }
+    // 清除计时器方法
+    function clearCstmInterval(id: any) {
+      window.clearTimeout(id)
+    }
+    // 执行第一次
+    try {
+      const resp_first = await func()
+      _count++
+      if (!assert(resp_first)) {
+        cstmInterval(func, interval)
+      } else {
+        resolve(resp_first)
+      }
+    } catch (error) {
+      reject(error)
+    }
+  })
+}
+
+export { polling }
+```
