@@ -20,7 +20,9 @@ module.exports = function({ types: t }) {
         const openingPath = path.get("openingElement")
         const children = t.react.buildChildren(openingPath.parent)
   
-        const tagNode = t.stringLiteral(openingPath.node.name.name)
+        const tagNode = t.react.isCompatTag(openingPath.node.name.name)
+          ? t.stringLiteral(openingPath.node.name.name)
+          : t.identifier(openingPath.node.name.name)
   
         // 创建 Vue h
         const createElement = t.identifier('h')
