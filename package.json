@@ -1,0 +1,31 @@
+{
+  "name": "xiezhewan",
+  "version": "1.0.0",
+  "description": "xiezhewan",
+  "main": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zouhangwithsweet/xiezhewan.git"
+  },
+  "keywords": [
+    "MD",
+    "JS"
+  ],
+  "author": "zouhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zouhangwithsweet/xiezhewan/issues"
+  },
+  "homepage": "https://github.com/zouhangwithsweet/xiezhewan#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

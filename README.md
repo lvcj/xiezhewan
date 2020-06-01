@@ -1,10 +1,27 @@
+---
+home: true
+heroImage: http://wx1.sinaimg.cn/large/006Cmetyly1fmav4nvm56j30k00k0755.jpg
+heroText: Xiezhewan
+tagline: 纯粹写着玩
+actionText: 没有快速上手 →
+actionLink: /#写着玩，练练算法，恶心的题什么的
+features:
+- title: 简洁至上，因为是乱写的
+  details: 以作者的智商为中心的项目结构，以最少的代码帮助不了你的工作作
+- title: 时间驱动
+  details: 享受无厘头代码书写快感
+- title: 高 Bug
+  details: 作者不为任何 bug 负责
+footer: MIT Licensed | Copyright © 2018-present Hang Zou
+---
+
 # 写着玩，练练算法，恶心的题什么的
 >  
 >let's start!
 >  
 
 ##### es6数组解构有点问题
-```
+```javascript
 // 生成几乎有序的数组
 function seqArr(n) {
     let _arr = []
@@ -57,7 +74,7 @@ console.log(generateArr(10, 2))
 
 ##### 拾人牙慧，研究下vue双向绑定
 > [极简实现input双向绑定，也是v-model的底层原理通过监听，input事件和Object.defineProperty实现](https://zouhangwithsweet.github.io/xiezhewan/easy.html)
-```
+```jsx
 // html结构
 <div>
     <input type="text" value="" id="input">
@@ -91,7 +108,7 @@ var userInfo = {};
 
 > 直接移动端写的很多，但是都是套的模板  
 > 在摘抄一下移动端的rem最简单的办法(目前都是750的页面)
-```
+```javascript
 (function (doc, win) {
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -110,7 +127,7 @@ var userInfo = {};
         doc.addEventListener('DOMContentLoaded', recalc, false);
     })(document, window);
 
-链接：https://www.jianshu.com/p/b00cd3506782
+// 链接：https://www.jianshu.com/p/b00cd3506782
 ```
 > MongoDB start
 
@@ -264,20 +281,20 @@ JavaScript 赋值运算符返回的值是被赋予的值
 ### 递归的思想
 > 我们已经写了不少递归了，也许你已经发觉了其中的固定模式：先定义一个边界条件，再定义个函数，让它从一堆元素中取一个并做点事情后，把余下的元素重新交给这个函数。 这一模式对 List、Tree 等数据结构都是适用的。例如，sum 函数就是一个 List 头部与其尾部的 sum 的和。一个 List 的积便是该 List 的头与其尾部的积相乘的积，一个 List 的长度就是 1 与其尾部长度的和. 等等  
 
-```hs
-    quickSort :: (Ord a) => [a] -> [a]
-    quickSort [] = []
-    quickSort (x:xs) =
-    let smallSorted = quickSort [a | a <- xs, a <= x]
-        biggerSorted = quickSort [a | a <- xs, a > x]
-    in smallSorted ++ [x] ++ biggerSorted
+```haskell
+  quickSort :: (Ord a) => [a] -> [a]
+  quickSort [] = []
+  quickSort (x:xs) =
+  let smallSorted = quickSort [a | a <- xs, a <= x]
+      biggerSorted = quickSort [a | a <- xs, a > x]
+  in smallSorted ++ [x] ++ biggerSorted
 
-    quickSort' :: (Ord a) => [a] -> [a]
-    quickSort' [] = []
-    quickSort' (x:xs) =
-    smallSorted ++ [x] ++ biggerSorted
-    where smallSorted = quickSort' [a | a <- xs, a <= x]
-          biggerSorted = quickSort' [a | a <- xs, a > x]
+  quickSort' :: (Ord a) => [a] -> [a]
+  quickSort' [] = []
+  quickSort' (x:xs) =
+  smallSorted ++ [x] ++ biggerSorted
+  where smallSorted = quickSort' [a | a <- xs, a <= x]
+        biggerSorted = quickSort' [a | a <- xs, a > x]
 ```
 
 #### 1px border
