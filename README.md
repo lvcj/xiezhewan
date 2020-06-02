@@ -7,7 +7,7 @@ actionText: 没有快速上手 →
 actionLink: /#写着玩，练练算法，恶心的题什么的
 features:
 - title: 简洁至上，因为是乱写的
-  details: 以作者的智商为中心的项目结构，以最少的代码帮助不了你的工作作
+  details: 以作者的智商为中心的项目结构，以最少的代码帮助不了你的工作
 - title: 时间驱动
   details: 享受无厘头代码书写快感
 - title: 高 Bug
