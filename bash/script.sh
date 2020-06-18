@@ -1,2 +1,11 @@
-read -p "Enter one or more values > "
-echo "REPLY = '$REPLY'"
+echo -n "输入一个1到3之间的数字（包含两端）> "
+read character
+case $character in
+  1 ) echo 1
+    ;;
+  2 ) echo 2
+    ;;
+  3 ) echo 3
+    ;;
+  * ) echo 输入不符合要求
+esac
