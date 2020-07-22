@@ -393,7 +393,7 @@ const polling = async (
   /**
    * 内部计数
    */
-  let _count = 0
+  let _count = 1
   // ------------------------------ 返回值用 promise 包裹一下 ------------------------------
   return new Promise(async (resolve, reject) => {
     // 轮询方法
